@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 export default function OrderAmount(props) {
-  const { amount, decreaseAmount, increaseAmount, handleChange } = props;
+  const { amount, setOrder, handleChange } = props;
 
   return (
     <div
@@ -12,7 +12,9 @@ export default function OrderAmount(props) {
         id="decrease-order-amount"
         type="button"
         className="btn btn-warning btn-sm w-6"
-        onClick={decreaseAmount}
+        onClick={() =>
+          amount > 1 && setOrder((prev) => ({ ...prev, amount: amount - 1 }))
+        }
       >
         -
       </button>
@@ -27,7 +29,7 @@ export default function OrderAmount(props) {
         id="increase-order-amount"
         type="button"
         className="btn btn-warning btn-sm !ml-0 w-6"
-        onClick={increaseAmount}
+        onClick={() => setOrder((prev) => ({ ...prev, amount: amount + 1 }))}
       >
         +
       </button>
@@ -37,7 +39,6 @@ export default function OrderAmount(props) {
 
 OrderAmount.propTypes = {
   amount: PropTypes.number.isRequired,
-  increaseAmount: PropTypes.func.isRequired,
-  decreaseAmount: PropTypes.func.isRequired,
+  setOrder: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
 };

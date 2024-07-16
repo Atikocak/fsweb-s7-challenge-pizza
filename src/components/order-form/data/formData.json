@@ -107,5 +107,19 @@
       "name": "large",
       "value": "Büyük"
     }
-  ]
+  ],
+  "initialData": {
+    "size": "",
+    "dough": "",
+    "ingredients": [],
+    "customerName": "",
+    "message": "",
+    "amount": 1
+  },
+  "initialErrors": {
+    "size": "",
+    "dough": "",
+    "ingredients": "",
+    "customerName": ""
+  }
 }

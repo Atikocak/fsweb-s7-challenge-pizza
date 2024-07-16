@@ -7,22 +7,7 @@ import OrderAmount from "./components/OrderAmount";
 import OrderMessage from "./components/OrderMessage";
 import SendOrder from "./components/SendOrder";
 import Size from "./components/Size";
-
-const initialData = {
-  size: "",
-  dough: "",
-  ingredients: [],
-  customerName: "",
-  message: "",
-  amount: 1,
-};
-
-const initialErrors = {
-  size: "",
-  dough: "",
-  ingredients: "",
-  customerName: "",
-};
+import { initialData, initialErrors } from "./data/formData.json";
 
 const productPrice = 85.5;
 
@@ -88,16 +73,6 @@ export default function OrderForm() {
         .catch((error) => {
           console.error("Error: ", error);
         });
-    }
-  };
-
-  const increaseAmount = () => {
-    setOrder((prev) => ({ ...prev, amount: prev.amount + 1 }));
-  };
-
-  const decreaseAmount = () => {
-    if (order.amount > 1) {
-      setOrder((prev) => ({ ...prev, amount: prev.amount - 1 }));
     }
   };
 
@@ -177,8 +152,7 @@ export default function OrderForm() {
       <div id="form-order-complete" className="flex justify-between">
         <OrderAmount
           amount={order.amount}
-          increaseAmount={increaseAmount}
-          decreaseAmount={decreaseAmount}
+          setOrder={setOrder}
           handleChange={handleAmountChange}
         />
         <div id="form-submit">
