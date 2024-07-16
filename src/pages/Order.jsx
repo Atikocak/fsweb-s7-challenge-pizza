@@ -1,7 +1,7 @@
-import OrderForm from "../app/OrderForm";
-import Layout from "../layout/Layout";
+import OrderForm from "@/order-form/OrderForm";
+import Layout from "layout/Layout";
 
-export default function OrderPage() {
+export default function Order() {
   return (
     <Layout>
       <div className="p-4">

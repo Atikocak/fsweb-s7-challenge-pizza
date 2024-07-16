@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "./footer/Footer";
+import Header from "./header/Header";
 
 export default function Layout({ children }) {
   return (

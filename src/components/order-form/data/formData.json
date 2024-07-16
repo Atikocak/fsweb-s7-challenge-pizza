@@ -1,0 +1,111 @@
+{
+  "doughData": [
+    {
+      "id": 1,
+      "value": "",
+      "content": "Hamur Kalınlığı",
+      "disabled": true
+    },
+    {
+      "id": 2,
+      "value": "thin",
+      "content": "İnce",
+      "disabled": false
+    },
+    {
+      "id": 3,
+      "value": "thick",
+      "content": "Kalın",
+      "disabled": false
+    }
+  ],
+  "ingredientData": [
+    {
+      "id": 1,
+      "name": "pepperoni",
+      "value": "Pepperoni"
+    },
+    {
+      "id": 2,
+      "name": "sausage",
+      "value": "Sosis"
+    },
+    {
+      "id": 3,
+      "name": "canadian-ham",
+      "value": "Kanada Jambonu"
+    },
+    {
+      "id": 4,
+      "name": "grilled-chicken",
+      "value": "Tavuk Izgara"
+    },
+    {
+      "id": 5,
+      "name": "onion",
+      "value": "Soğan"
+    },
+    {
+      "id": 6,
+      "name": "tomato",
+      "value": "Domates"
+    },
+    {
+      "id": 7,
+      "name": "corn",
+      "value": "Mısır"
+    },
+    {
+      "id": 8,
+      "name": "soujouk",
+      "value": "Sucuk"
+    },
+    {
+      "id": 9,
+      "name": "jalepeno",
+      "value": "Jalepeno"
+    },
+    {
+      "id": 10,
+      "name": "garlic",
+      "value": "Sarımsak"
+    },
+    {
+      "id": 11,
+      "name": "pepper",
+      "value": "Biber"
+    },
+    {
+      "id": 12,
+      "name": "bacon",
+      "value": "Pastırma"
+    },
+    {
+      "id": 13,
+      "name": "eggplant",
+      "value": "Patlıcan"
+    },
+    {
+      "id": 14,
+      "name": "zucchini",
+      "value": "Kabak"
+    }
+  ],
+  "sizeData": [
+    {
+      "id": 1,
+      "name": "little",
+      "value": "Küçük"
+    },
+    {
+      "id": 2,
+      "name": "medium",
+      "value": "Orta"
+    },
+    {
+      "id": 3,
+      "name": "large",
+      "value": "Büyük"
+    }
+  ]
+}

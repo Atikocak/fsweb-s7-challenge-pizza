@@ -9,10 +9,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        roboto: ["Roboto Condensed", "sans-serif"],
-        barlow: ["Barlow", "sans-serif"],
-        quattrocento: ["Quattrocento", "serif"],
-        satisfy: ["Satisfy", "cursive"],
+        roboto: ["Roboto Condensed"],
+        barlow: ["Barlow"],
+        quattrocento: ["Quattrocento"],
+        satisfy: ["Satisfy"],
       },
       colors: {
         yellow: "#FDC913",

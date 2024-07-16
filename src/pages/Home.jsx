@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function HeroPage() {
+export default function Home() {
   return (
     <div className="flex h-screen flex-col justify-start bg-red bg-home-banner bg-cover bg-center bg-no-repeat text-center">
       <div className="pt-16">
@@ -15,7 +15,7 @@ export default function HeroPage() {
       </div>
       <div className="mx-auto mt-4 w-32">
         <Link to="/order">
-          <button className="w-full rounded-full border-solid border-black bg-yellow p-2 font-semibold shadow-xl transition duration-200 hover:bg-gray-200">
+          <button className="w-full rounded-full border-solid border-black bg-yellow p-2 font-semibold text-black shadow-xl transition duration-200 hover:bg-gray-200">
             ACIKTIM
           </button>
         </Link>

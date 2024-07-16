@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { doughData } from "../data/formData.json";
 
 export default function Dough(props) {
   const { dough, handleChange } = props;
@@ -13,11 +14,11 @@ export default function Dough(props) {
         value={dough}
         onChange={handleChange}
       >
-        <option value={""} disabled>
-          Hamur Kalınlığı
-        </option>
-        <option value={"thin"}>İnce</option>
-        <option value={"thick"}>Kalın</option>
+        {doughData.map((item) => (
+          <option key={item.id} value={item.value} disabled={item.disabled}>
+            {item.content}
+          </option>
+        ))}
       </select>
     </div>
   );

@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "paths": {
+      "@/*": ["./src/components/*"],
+      "layout/*": ["./src/layout/*"]
+    }
+  },
+  "exclude": ["node_modules", "build"]
+}
