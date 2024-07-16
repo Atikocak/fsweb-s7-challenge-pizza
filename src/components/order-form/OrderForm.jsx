@@ -40,29 +40,8 @@ export default function OrderForm() {
         order.amount * (productPrice + order.ingredients.length * 5),
       );
     }
-    validateForm();
-  }, [order]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (isValid) {
-      const submittedOrder = {
-        ...order,
-        price: totalPrice,
-      };
-
-      axios
-        .post("https://reqres.in/api/pizza", submittedOrder)
-        .then((response) => {
-          console.log("Sipariş özeti: ", response.data);
-        })
-        .catch((error) => {
-          console.error("Error: ", error);
-        });
-    }
-  };
-
-  const validateForm = () => {
+    // Form Validation
     let isValid = true;
     let errors = { ...initialErrors };
 
@@ -91,6 +70,25 @@ export default function OrderForm() {
 
     setErrors(errors);
     setIsValid(isValid);
+  }, [order]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isValid) {
+      const submittedOrder = {
+        ...order,
+        price: totalPrice,
+      };
+
+      axios
+        .post("https://reqres.in/api/pizza", submittedOrder)
+        .then((response) => {
+          console.log("Sipariş özeti: ", response.data);
+        })
+        .catch((error) => {
+          console.error("Error: ", error);
+        });
+    }
   };
 
   const increaseAmount = () => {
