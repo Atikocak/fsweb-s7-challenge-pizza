@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 export default function CustomerName(props) {
-  const { customerName, handleChange } = props;
+  const { customerName, handleChange, error } = props;
 
   return (
     <>
@@ -19,6 +19,7 @@ export default function CustomerName(props) {
         value={customerName}
         onChange={handleChange}
       />
+      {error && <p className="mt-1 text-sm text-red"> {error} </p>}
     </>
   );
 }
@@ -26,4 +27,5 @@ export default function CustomerName(props) {
 CustomerName.propTypes = {
   customerName: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
+  error: PropTypes.string,
 };

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 export default function SendOrder(props) {
-  const { ingredientPrice, totalPrice, handleSubmit } = props;
+  const { ingredientPrice, totalPrice, handleSubmit, disabled } = props;
 
   return (
     <div className="card w-72 bg-base-100 shadow-xl">
@@ -22,6 +22,7 @@ export default function SendOrder(props) {
         <button
           className="btn btn-neutral w-full border-yellow !bg-yellow text-black hover:!bg-amber-200"
           onClick={handleSubmit}
+          disabled={disabled}
         >
           SİPARİŞ VER
         </button>
@@ -34,4 +35,5 @@ SendOrder.propTypes = {
   ingredientPrice: PropTypes.number.isRequired,
   totalPrice: PropTypes.number.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };

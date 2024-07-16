@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { doughData } from "../data/formData.json";
 
 export default function Dough(props) {
-  const { dough, handleChange } = props;
+  const { dough, handleChange, error } = props;
 
   return (
     <div id="form-dough">
@@ -20,6 +20,7 @@ export default function Dough(props) {
           </option>
         ))}
       </select>
+      {error && <p className="mt-1 text-sm text-red"> {error} </p>}
     </div>
   );
 }
@@ -27,4 +28,5 @@ export default function Dough(props) {
 Dough.propTypes = {
   dough: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
+  error: PropTypes.string,
 };

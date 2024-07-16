@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { sizeData } from "../data/formData.json";
 
 export default function Size(props) {
-  const { size, handleChange } = props;
+  const { size, handleChange, error } = props;
 
   return (
     <div id="form-size">
@@ -27,6 +27,7 @@ export default function Size(props) {
           </div>
         );
       })}
+      {error && <p className="mt-1 text-sm text-red"> {error} </p>}
     </div>
   );
 }
@@ -34,4 +35,5 @@ export default function Size(props) {
 Size.propTypes = {
   size: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
+  error: PropTypes.string,
 };

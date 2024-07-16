@@ -1,3 +1,4 @@
+import axios from "node_modules/axios/index";
 import { useEffect, useState } from "react";
 import CustomerName from "./components/CustomerName";
 import Dough from "./components/Dough";
@@ -16,12 +17,21 @@ const initialData = {
   amount: 1,
 };
 
+const initialErrors = {
+  size: "",
+  dough: "",
+  ingredients: "",
+  customerName: "",
+};
+
 const productPrice = 85.5;
 
 export default function OrderForm() {
   const [order, setOrder] = useState(initialData);
   const [ingredientPrice, setIngredientPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(productPrice);
+  const [errors, setErrors] = useState(initialErrors);
+  const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
     if (order.amount >= 1) {
@@ -30,15 +40,57 @@ export default function OrderForm() {
         order.amount * (productPrice + order.ingredients.length * 5),
       );
     }
+    validateForm();
   }, [order]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const submittedOrder = {
-      ...order,
-      price: totalPrice,
-    };
-    console.log("Submitted Order: ", submittedOrder);
+    if (isValid) {
+      const submittedOrder = {
+        ...order,
+        price: totalPrice,
+      };
+
+      axios
+        .post("https://reqres.in/api/pizza", submittedOrder)
+        .then((response) => {
+          console.log("Sipariş özeti: ", response.data);
+        })
+        .catch((error) => {
+          console.error("Error: ", error);
+        });
+    }
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+    let errors = { ...initialErrors };
+
+    if (!order.size) {
+      errors.size = "Lütfen pizza boyutunu seçiniz!";
+      isValid = false;
+    }
+    if (!order.dough) {
+      errors.dough = "Lütfen hamur tipini seçiniz!";
+      isValid = false;
+    }
+    if (order.ingredients.length < 4) {
+      errors.ingredients = "En az 4 malzeme seçmelisiniz!";
+      isValid = false;
+    } else if (order.ingredients.length > 10) {
+      errors.ingredients = "En fazla 10 malzeme seçebilirsiniz!";
+      isValid = false;
+    }
+    if (!order.customerName) {
+      errors.customerName = "Lütfen teslimat için isim giriniz!";
+      isValid = false;
+    } else if (order.customerName.length < 3) {
+      errors.customerName = "İsim en az 3 karakter olmalıdır!";
+      isValid = false;
+    }
+
+    setErrors(errors);
+    setIsValid(isValid);
   };
 
   const increaseAmount = () => {
@@ -92,19 +144,29 @@ export default function OrderForm() {
   return (
     <form className="flex flex-col gap-4">
       <div id="form-dimension" className="mt-4 flex justify-between">
-        <Size size={order.size} handleChange={handleSizeChange} />
-        <Dough dough={order.dough} handleChange={handleDoughChange} />
+        <Size
+          size={order.size}
+          handleChange={handleSizeChange}
+          error={errors.size}
+        />
+        <Dough
+          dough={order.dough}
+          handleChange={handleDoughChange}
+          error={errors.dough}
+        />
       </div>
       <div id="form-ingredients">
         <Ingredients
           ingredients={order.ingredients}
           handleChange={handleIngredientChange}
+          error={errors.ingredients}
         />
       </div>
       <div id="form-customer-name">
         <CustomerName
           customerName={order.customerName}
           handleChange={handleNameChange}
+          error={errors.customerName}
         />
       </div>
       <div id="form-order-message">
@@ -126,6 +188,7 @@ export default function OrderForm() {
             ingredientPrice={ingredientPrice}
             totalPrice={totalPrice}
             handleSubmit={handleSubmit}
+            disabled={!isValid}
           />
         </div>
       </div>

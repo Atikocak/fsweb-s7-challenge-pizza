@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { ingredientData } from "../data/formData.json";
 
 export default function Ingredients(props) {
-  const { ingredients, handleChange } = props;
+  const { ingredients, handleChange, error } = props;
 
   return (
     <>
@@ -35,6 +35,7 @@ export default function Ingredients(props) {
           );
         })}
       </div>
+      {error && <p className="mt-1 text-sm text-red"> {error} </p>}
     </>
   );
 }
@@ -42,4 +43,5 @@ export default function Ingredients(props) {
 Ingredients.propTypes = {
   ingredients: PropTypes.array.isRequired,
   handleChange: PropTypes.func.isRequired,
+  error: PropTypes.string,
 };
