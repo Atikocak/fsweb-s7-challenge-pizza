@@ -19,7 +19,12 @@ export default function CustomerName(props) {
         value={customerName}
         onChange={handleChange}
       />
-      {error && <p className="mt-1 text-sm text-red"> {error} </p>}
+      {error && (
+        <p cy-data="error" className="mt-1 text-sm text-red">
+          {" "}
+          {error}{" "}
+        </p>
+      )}
     </>
   );
 }

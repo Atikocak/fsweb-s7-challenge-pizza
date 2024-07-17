@@ -6,7 +6,9 @@ export default function Ingredients(props) {
 
   return (
     <>
-      <h3 className="text-lg font-bold">Ek Malzemeler</h3>
+      <h3 className="text-lg font-bold">
+        Ek Malzemeler<span className="ml-1 text-red">*</span>
+      </h3>
       <p className="py-2 text-sm">
         En fazla <span className="font-bold underline">10</span> adet malzeme
         seçebilirsiniz. <span className="font-bold underline">5₺</span>
@@ -35,7 +37,11 @@ export default function Ingredients(props) {
           );
         })}
       </div>
-      {error && <p className="mt-1 text-sm text-red"> {error} </p>}
+      {error && (
+        <p cy-data="error" className="mt-1 text-sm text-red">
+          {error}
+        </p>
+      )}
     </>
   );
 }

@@ -5,7 +5,7 @@ export default function Dough(props) {
   const { dough, handleChange, error } = props;
 
   return (
-    <div id="form-dough">
+    <div id="form-dough" cy-data="dough">
       <h3 className="pb-1 text-lg font-bold">
         Hamur Seç <span className="text-red">*</span>
       </h3>
@@ -20,7 +20,11 @@ export default function Dough(props) {
           </option>
         ))}
       </select>
-      {error && <p className="mt-1 text-sm text-red"> {error} </p>}
+      {error && (
+        <p cy-data="error" className="mt-1 text-sm text-red">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

@@ -19,6 +19,7 @@ export default function OrderForm() {
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
+    // Price Calculation
     if (order.amount >= 1) {
       setIngredientPrice(order.ingredients.length * 5);
       setTotalPrice(
@@ -57,6 +58,7 @@ export default function OrderForm() {
     setIsValid(isValid);
   }, [order]);
 
+  // Form Submit
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isValid) {
@@ -76,14 +78,13 @@ export default function OrderForm() {
     }
   };
 
+  // Event Handlers
   const handleSizeChange = (e) => {
     setOrder((prev) => ({ ...prev, size: e.target.value }));
   };
-
   const handleDoughChange = (e) => {
     setOrder((prev) => ({ ...prev, dough: e.target.value }));
   };
-
   const handleIngredientChange = (e) => {
     const { value, checked } = e.target;
     if (checked) {
@@ -98,15 +99,12 @@ export default function OrderForm() {
       }));
     }
   };
-
   const handleNameChange = (e) => {
     setOrder((prev) => ({ ...prev, customerName: e.target.value }));
   };
-
   const handleMessageChange = (e) => {
     setOrder((prev) => ({ ...prev, message: e.target.value }));
   };
-
   const handleAmountChange = (e) => {
     const value = parseInt(e.target.value);
     if (value > 0) {
@@ -114,6 +112,7 @@ export default function OrderForm() {
     }
   };
 
+  // JSX return
   return (
     <form className="flex flex-col gap-4">
       <div id="form-dimension" className="mt-4 flex justify-between">
@@ -128,21 +127,21 @@ export default function OrderForm() {
           error={errors.dough}
         />
       </div>
-      <div id="form-ingredients">
+      <div id="form-ingredients" cy-data="ingredients">
         <Ingredients
           ingredients={order.ingredients}
           handleChange={handleIngredientChange}
           error={errors.ingredients}
         />
       </div>
-      <div id="form-customer-name">
+      <div id="form-customer-name" cy-data="customer-name">
         <CustomerName
           customerName={order.customerName}
           handleChange={handleNameChange}
           error={errors.customerName}
         />
       </div>
-      <div id="form-order-message">
+      <div id="form-order-message" cy-data="order-message">
         <OrderMessage
           message={order.message}
           handleChange={handleMessageChange}
@@ -155,7 +154,7 @@ export default function OrderForm() {
           setOrder={setOrder}
           handleChange={handleAmountChange}
         />
-        <div id="form-submit">
+        <div id="form-submit" cy-data="submit">
           <SendOrder
             ingredientPrice={ingredientPrice}
             totalPrice={totalPrice}

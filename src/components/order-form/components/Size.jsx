@@ -5,7 +5,7 @@ export default function Size(props) {
   const { size, handleChange, error } = props;
 
   return (
-    <div id="form-size">
+    <div id="form-size" cy-data="size">
       <h3 className="text-lg font-bold">
         Boyut Seç <span className="text-red">*</span>
       </h3>
@@ -27,7 +27,11 @@ export default function Size(props) {
           </div>
         );
       })}
-      {error && <p className="mt-1 text-sm text-red"> {error} </p>}
+      {error && (
+        <p cy-data="error" className="mt-1 text-sm text-red">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

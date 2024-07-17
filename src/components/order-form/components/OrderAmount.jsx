@@ -6,6 +6,7 @@ export default function OrderAmount(props) {
   return (
     <div
       id="form-order-amount"
+      cy-data="order-amount"
       className="mt-4 flex items-start justify-center space-x-2"
     >
       <button
