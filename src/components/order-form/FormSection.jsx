@@ -6,10 +6,10 @@ import PropTypes from "prop-types";
  * @component of OrderForm
  */
 export default function FormSection(props) {
-  const { name, label, title, required, children, error } = props;
+  const { name, className, label, title, required, children, error } = props;
 
   return (
-    <div id={`form-${name}`} cy-data={`${name}`}>
+    <div id={`form-${name}`} cy-data={`${name}`} className={`${className}`}>
       {!label && title ? (
         <h3 className="py-2 text-lg font-bold">
           {title}
@@ -35,6 +35,7 @@ export default function FormSection(props) {
 
 FormSection.propTypes = {
   name: PropTypes.string.isRequired,
+  className: PropTypes.string,
   label: PropTypes.bool,
   title: PropTypes.string,
   required: PropTypes.bool,

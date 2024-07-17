@@ -13,6 +13,7 @@ export default {
         barlow: ["Barlow"],
         quattrocento: ["Quattrocento"],
         satisfy: ["Satisfy"],
+        londrina: ["Londrina Solid"],
       },
       colors: {
         yellow: "#FDC913",

@@ -4,7 +4,7 @@ import Layout from "layout/Layout";
 export default function Order() {
   return (
     <Layout>
-      <div className="p-4">
+      <div className="mx-auto w-[548px] p-4">
         <div>Product Information</div>
         <div>
           <h2>Product Order Form</h2>

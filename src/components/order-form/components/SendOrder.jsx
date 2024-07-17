@@ -9,7 +9,7 @@ export default function SendOrder(props) {
   const { ingredientPrice, totalPrice, handleSubmit, disabled } = props;
 
   return (
-    <div className="card w-72 bg-base-100 shadow-xl">
+    <div className="card min-w-[352px] bg-base-100 shadow-xl sm:w-72">
       <div className="card-body">
         <h3 className="card-title font-bold">Sipariş Toplamı</h3>
         <div className="grid grid-flow-col grid-rows-2">

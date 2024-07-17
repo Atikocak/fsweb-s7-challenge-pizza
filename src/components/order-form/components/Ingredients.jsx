@@ -15,7 +15,7 @@ export default function Ingredients(props) {
         En fazla <span className="font-bold underline">10</span> adet malzeme
         seçebilirsiniz. <span className="font-bold underline">5₺</span>
       </p>
-      <div className="grid grid-flow-col grid-rows-5 gap-1">
+      <div className="grid grid-flow-row grid-cols-2 gap-1 sm:grid-flow-col sm:grid-rows-5">
         {ingredientData.map((item) => {
           return (
             <div

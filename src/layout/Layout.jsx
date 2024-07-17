@@ -2,11 +2,15 @@ import PropTypes from "prop-types";
 import Footer from "./footer/Footer";
 import Header from "./header/Header";
 
-export default function Layout({ children }) {
+export default function Layout({ children, background }) {
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-screen w-full flex-col">
       <Header />
-      <main className="mx-auto w-full max-w-lg flex-grow">{children}</main>
+      <main
+        className={`min-w-full ${background} max-w-sm flex-grow transition-all duration-300 sm:max-w-lg`}
+      >
+        {children}
+      </main>
       <Footer />
     </div>
   );
@@ -14,4 +18,5 @@ export default function Layout({ children }) {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  background: PropTypes.string,
 };

@@ -1,5 +1,6 @@
-import axios from "node_modules/axios/index";
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   createIngredientChangeHandler,
   createInputHandler,
@@ -28,6 +29,7 @@ export default function OrderForm() {
   const [totalPrice, setTotalPrice] = useState(productPrice);
   const [errors, setErrors] = useState(initialErrors);
   const [isValid, setIsValid] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Calculate the ingredient price and total price
@@ -86,9 +88,11 @@ export default function OrderForm() {
         .post("https://reqres.in/api/pizza", submittedOrder)
         .then((response) => {
           console.log("Sipariş özeti: ", response.data);
+          navigate("/success", { state: { order: response.data } });
         })
         .catch((error) => {
           console.error("Error: ", error);
+          setErrors((prev) => ({ ...prev, submit: error.message }));
         });
     }
   };
@@ -150,15 +154,18 @@ export default function OrderForm() {
         />
       </FormSection>
       <hr className="mt-4" />
-      <div className="flex justify-between">
-        <FormSection name="order-amount">
+      <div className="grid w-full grid-flow-col grid-rows-2 justify-between sm:flex sm:max-w-full sm:flex-row">
+        <FormSection
+          name="order-amount"
+          className="col-start-1 row-start-2 mt-2"
+        >
           <OrderAmount
             amount={order.amount}
             setOrder={setOrder}
             handleChange={handleInputChange("amount", (value) => value > 0)}
           />
         </FormSection>
-        <FormSection name="submit">
+        <FormSection name="submit" className="col-start-1 row-start-1">
           <SendOrder
             ingredientPrice={ingredientPrice}
             totalPrice={totalPrice}
@@ -167,6 +174,7 @@ export default function OrderForm() {
           />
         </FormSection>
       </div>
+      {errors.submit && <p className="text-red">{errors.submit}</p>}
     </form>
   );
 }
