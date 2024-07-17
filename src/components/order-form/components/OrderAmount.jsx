@@ -1,16 +1,17 @@
 import PropTypes from "prop-types";
 
+/**
+ * OrderAmount component
+ * Renders the order amount input field for the pizza order form.
+ * @component of FormSection
+ */
 export default function OrderAmount(props) {
   const { amount, setOrder, handleChange } = props;
 
   return (
-    <div
-      id="form-order-amount"
-      cy-data="order-amount"
-      className="mt-4 flex items-start justify-center space-x-2"
-    >
+    <div className="flex items-start justify-center space-x-2">
       <button
-        id="decrease-order-amount"
+        id="order-amount-decrease"
         type="button"
         className="btn btn-warning btn-sm w-6"
         onClick={() =>
@@ -27,7 +28,7 @@ export default function OrderAmount(props) {
         className="input input-sm input-bordered !ml-0 w-12 text-center"
       />
       <button
-        id="increase-order-amount"
+        id="order-amount-increase"
         type="button"
         className="btn btn-warning btn-sm !ml-0 w-6"
         onClick={() => setOrder((prev) => ({ ...prev, amount: amount + 1 }))}

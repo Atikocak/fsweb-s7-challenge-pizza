@@ -1,14 +1,16 @@
 import PropTypes from "prop-types";
 import { sizeData } from "../data/formData.json";
 
+/**
+ * Size component
+ * Renders the size selection radio buttons for the pizza order form.
+ * @component of FormSection
+ */
 export default function Size(props) {
-  const { size, handleChange, error } = props;
+  const { size, handleChange } = props;
 
   return (
-    <div id="form-size" cy-data="size">
-      <h3 className="text-lg font-bold">
-        Boyut Seç <span className="text-red">*</span>
-      </h3>
+    <>
       {sizeData.map((item) => {
         return (
           <div key={item.id} className="flex flex-row items-center">
@@ -27,17 +29,11 @@ export default function Size(props) {
           </div>
         );
       })}
-      {error && (
-        <p cy-data="error" className="mt-1 text-sm text-red">
-          {error}
-        </p>
-      )}
-    </div>
+    </>
   );
 }
 
 Size.propTypes = {
   size: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  error: PropTypes.string,
 };

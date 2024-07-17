@@ -4,7 +4,8 @@
     "target": "ESNext",
     "paths": {
       "@/*": ["./src/components/*"],
-      "layout/*": ["./src/layout/*"]
+      "layout/*": ["./src/layout/*"],
+      "utils/*": ["./src/utils/*"]
     }
   },
   "exclude": ["node_modules", "build"]

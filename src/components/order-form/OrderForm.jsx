@@ -1,5 +1,10 @@
 import axios from "node_modules/axios/index";
 import { useEffect, useState } from "react";
+import {
+  createIngredientChangeHandler,
+  createInputHandler,
+  createSelectionHandler,
+} from "utils/helperMethods";
 import CustomerName from "./components/CustomerName";
 import Dough from "./components/Dough";
 import Ingredients from "./components/Ingredients";
@@ -8,9 +13,15 @@ import OrderMessage from "./components/OrderMessage";
 import SendOrder from "./components/SendOrder";
 import Size from "./components/Size";
 import { initialData, initialErrors } from "./data/formData.json";
+import FormSection from "./FormSection";
 
 const productPrice = 85.5;
 
+/**
+ * OrderForm component
+ * Handles the pizza order form, including size, dough, ingredients, and customer information.
+ * @component of OrderPage
+ */
 export default function OrderForm() {
   const [order, setOrder] = useState(initialData);
   const [ingredientPrice, setIngredientPrice] = useState(0);
@@ -19,14 +30,13 @@ export default function OrderForm() {
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
-    // Price Calculation
+    // Calculate the ingredient price and total price
     if (order.amount >= 1) {
       setIngredientPrice(order.ingredients.length * 5);
       setTotalPrice(
         order.amount * (productPrice + order.ingredients.length * 5),
       );
     }
-
     // Form Validation
     let isValid = true;
     let errors = { ...initialErrors };
@@ -53,11 +63,16 @@ export default function OrderForm() {
       errors.customerName = "İsim en az 3 karakter olmalıdır!";
       isValid = false;
     }
-
+    // Update the state
     setErrors(errors);
     setIsValid(isValid);
   }, [order]);
 
+  /**
+   * Handles form submission
+   * Sends the order data to the server if valid
+   * @param {Event} e - The form submission event
+   */
   // Form Submit
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -79,89 +94,78 @@ export default function OrderForm() {
   };
 
   // Event Handlers
-  const handleSizeChange = (e) => {
-    setOrder((prev) => ({ ...prev, size: e.target.value }));
-  };
-  const handleDoughChange = (e) => {
-    setOrder((prev) => ({ ...prev, dough: e.target.value }));
-  };
-  const handleIngredientChange = (e) => {
-    const { value, checked } = e.target;
-    if (checked) {
-      setOrder((prev) => ({
-        ...prev,
-        ingredients: [...prev.ingredients, value],
-      }));
-    } else {
-      setOrder((prev) => ({
-        ...prev,
-        ingredients: prev.ingredients.filter((item) => item !== value),
-      }));
-    }
-  };
-  const handleNameChange = (e) => {
-    setOrder((prev) => ({ ...prev, customerName: e.target.value }));
-  };
-  const handleMessageChange = (e) => {
-    setOrder((prev) => ({ ...prev, message: e.target.value }));
-  };
-  const handleAmountChange = (e) => {
-    const value = parseInt(e.target.value);
-    if (value > 0) {
-      setOrder((prev) => ({ ...prev, amount: value }));
-    }
-  };
+  const handleSelectionChange = createSelectionHandler(setOrder);
+  const handleIngredientChange = createIngredientChangeHandler(setOrder);
+  const handleInputChange = createInputHandler(setOrder);
 
   // JSX return
   return (
     <form className="flex flex-col gap-4">
       <div id="form-dimension" className="mt-4 flex justify-between">
-        <Size
-          size={order.size}
-          handleChange={handleSizeChange}
-          error={errors.size}
-        />
-        <Dough
-          dough={order.dough}
-          handleChange={handleDoughChange}
+        <FormSection name="size" title="Boyut Seç" error={errors.size} required>
+          <Size
+            size={order.size}
+            handleChange={handleSelectionChange("size")}
+          />
+        </FormSection>
+        <FormSection
+          name="dough"
+          title="Hamur Seç"
           error={errors.dough}
-        />
+          required
+        >
+          <Dough
+            dough={order.dough}
+            handleChange={handleSelectionChange("dough")}
+          />
+        </FormSection>
       </div>
-      <div id="form-ingredients" cy-data="ingredients">
+      <FormSection
+        name="ingredients"
+        title="Malzeme Seç"
+        error={errors.ingredients}
+        required
+      >
         <Ingredients
           ingredients={order.ingredients}
           handleChange={handleIngredientChange}
-          error={errors.ingredients}
         />
-      </div>
-      <div id="form-customer-name" cy-data="customer-name">
+      </FormSection>
+      <FormSection
+        name="customer-name"
+        title="İsim"
+        error={errors.customerName}
+        label
+        required
+      >
         <CustomerName
           customerName={order.customerName}
-          handleChange={handleNameChange}
-          error={errors.customerName}
+          handleChange={handleInputChange("customerName")}
         />
-      </div>
-      <div id="form-order-message" cy-data="order-message">
+      </FormSection>
+      <FormSection name="order-message" title="Sipariş Notu" label>
         <OrderMessage
           message={order.message}
-          handleChange={handleMessageChange}
+          handleChange={handleInputChange("message")}
         />
-      </div>
+      </FormSection>
       <hr className="mt-4" />
-      <div id="form-order-complete" className="flex justify-between">
-        <OrderAmount
-          amount={order.amount}
-          setOrder={setOrder}
-          handleChange={handleAmountChange}
-        />
-        <div id="form-submit" cy-data="submit">
+      <div className="flex justify-between">
+        <FormSection name="order-amount">
+          <OrderAmount
+            amount={order.amount}
+            setOrder={setOrder}
+            handleChange={handleInputChange("amount", (value) => value > 0)}
+          />
+        </FormSection>
+        <FormSection name="submit">
           <SendOrder
             ingredientPrice={ingredientPrice}
             totalPrice={totalPrice}
             handleSubmit={handleSubmit}
             disabled={!isValid}
           />
-        </div>
+        </FormSection>
       </div>
     </form>
   );

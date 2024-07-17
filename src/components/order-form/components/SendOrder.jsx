@@ -1,5 +1,10 @@
 import PropTypes from "prop-types";
 
+/**
+ * SendOrder component
+ * Renders the order total and submit button for the pizza order form.
+ * @component of OrderForm
+ */
 export default function SendOrder(props) {
   const { ingredientPrice, totalPrice, handleSubmit, disabled } = props;
 
