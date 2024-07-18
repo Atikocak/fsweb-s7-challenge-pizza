@@ -21,6 +21,7 @@ export default {
         "dark-gray": "#292929",
         red: "#CE2829",
         beige: "#FAF7F2",
+        footer: "#1A1A1A",
       },
       backgroundImage: {
         "home-banner": "url('../Assets/mile1-assets/home-banner.png')",
