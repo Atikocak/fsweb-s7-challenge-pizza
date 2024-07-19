@@ -1,0 +1,86 @@
+{
+  "instagram": [
+    {
+      "id": 1,
+      "name": "item1",
+      "url": "Assets/mile2-aseets/footer/insta/li-0.png"
+    },
+    {
+      "id": 2,
+      "name": "item2",
+      "url": "Assets/mile2-aseets/footer/insta/li-1.png"
+    },
+    {
+      "id": 3,
+      "name": "item3",
+      "url": "Assets/mile2-aseets/footer/insta/li-2.png"
+    },
+    {
+      "id": 4,
+      "name": "item4",
+      "url": "Assets/mile2-aseets/footer/insta/li-3.png"
+    },
+    {
+      "id": 5,
+      "name": "item5",
+      "url": "Assets/mile2-aseets/footer/insta/li-4.png"
+    },
+    {
+      "id": 6,
+      "name": "item6",
+      "url": "Assets/mile2-aseets/footer/insta/li-5.png"
+    }
+  ],
+  "hotMenu": [
+    {
+      "id": 1,
+      "name": "item1",
+      "value": "Terminal Pizza"
+    },
+    {
+      "id": 2,
+      "name": "item2",
+      "value": "5 Kişilik Hackhathlon Pizza"
+    },
+    {
+      "id": 3,
+      "name": "item3",
+      "value": "useEffect Tavuklu Pizza"
+    },
+    {
+      "id": 4,
+      "name": "item4",
+      "value": "Beyaz Console Frosty"
+    },
+    {
+      "id": 5,
+      "name": "item5",
+      "value": "Testler Geçti Mutlu Burger"
+    },
+    {
+      "id": 6,
+      "name": "item6",
+      "value": "Position Absolute Acı Burger"
+    }
+  ],
+  "contact": [
+    {
+      "id": 1,
+      "name": "address",
+      "value": "341 Londonderry Road, Istanbul Türkiye",
+      "icon": "Assets/mile2-aseets/footer/icons/icon-1.png"
+    },
+    {
+      "id": 2,
+      "name": "mail",
+      "value": "aciktim@teknolojikyemekler.com",
+      "icon": "Assets/mile2-aseets/footer/icons/icon-2.png"
+    },
+    {
+      "id": 3,
+      "name": "phone",
+      "value": "+90 216 123 45 67",
+      "icon": "Assets/mile2-aseets/footer/icons/icon-3.png"
+    }
+  ]
+}
