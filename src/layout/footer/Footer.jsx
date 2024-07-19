@@ -26,7 +26,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="py-8">
-            <h3 className="mb-6 text-left text-lg">Hot Menu</h3>
+            <h3 className="mb-6 text-left text-xl">Hot Menu</h3>
             <ul className="flex flex-col items-start gap-4">
               {hotMenu.map((item) => (
                 <li key={item.id} className="font-barlow text-sm">
@@ -36,7 +36,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="py-8">
-            <h3 className="mb-6 text-left text-lg">Instagram</h3>
+            <h3 className="mb-6 text-left text-xl">Instagram</h3>
             <ul className="grid grid-flow-row grid-cols-3 justify-end gap-2">
               {instagram.map((item) => (
                 <li key={item.id}>
