@@ -7,7 +7,7 @@ export default function Layout({ children, background }) {
     <div className="flex h-screen w-full flex-col">
       <Header />
       <main
-        className={`min-w-full ${background} max-w-sm flex-grow transition-all duration-300 sm:max-w-lg`}
+        className={`min-w-full ${background} max-w-sm flex-grow transition duration-300 sm:max-w-lg`}
       >
         {children}
       </main>

@@ -1,15 +1,17 @@
 export default function Bottom() {
   return (
-    <>
-      <div className="bg-footer flex w-full py-8 text-white">
-        <div className="mx-auto flex w-[832px] justify-between">
-          <p className="px-4 text-xs">© 2024 Teknolojik Yemekler.</p>
+    <section className="flex w-full py-8 text-white">
+      <div className="flex w-full items-center justify-between">
+        <small className="text-xs">&copy; 2024 Teknolojik Yemekler.</small>
+        <a href="#" aria-label="Twitter hesabımızı ziyaret edin">
           <img
             src="Assets/mile2-aseets/footer/twitter.svg"
-            className="px-4 brightness-[103%] contrast-[103%] hue-rotate-0 invert saturate-[42%] sepia-0 filter"
+            className="brightness-[103%] contrast-[103%] hue-rotate-0 invert saturate-[42%] sepia-0 filter"
+            alt=""
+            aria-hidden="true"
           />
-        </div>
+        </a>
       </div>
-    </>
+    </section>
   );
 }

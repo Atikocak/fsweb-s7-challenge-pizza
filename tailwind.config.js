@@ -24,7 +24,10 @@ export default {
         footer: "#1A1A1A",
       },
       backgroundImage: {
-        "home-banner": "url('../Assets/mile1-assets/home-banner.png')",
+        "home-banner": "url('Assets/mile1-assets/home-banner.png')",
+        "card-1": "url('Assets/mile2-aseets/cta/kart-1.png')",
+        "card-2": "url('Assets/mile2-aseets/cta/kart-2.png')",
+        "card-3": "url('Assets/mile2-aseets/cta/kart-3.png')",
       },
     },
   },

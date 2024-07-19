@@ -8,7 +8,7 @@ export default function HeroSection() {
           Teknolojik Yemekler
         </h1>
       </div>
-      <div className="mx-auto mt-12 min-h-[195px] w-full max-w-96 transition-all duration-300 sm:max-w-[750px]">
+      <div className="mx-auto mt-12 min-h-[195px] w-full max-w-96 transition duration-300 sm:max-w-[750px]">
         <p className="font-satisfy text-[32px] font-normal leading-[44.27px] text-yellow">
           fırsatı kaçırma
         </p>
@@ -18,7 +18,7 @@ export default function HeroSection() {
       </div>
       <div className="mx-auto mt-4 w-48">
         <Link to="/order">
-          <button className="w-full rounded-full border-solid border-black bg-yellow p-1 font-barlow text-xl font-semibold leading-[56px] text-black shadow-xl transition-all duration-200 hover:bg-gray-200">
+          <button className="rounded-full border-solid border-black bg-yellow px-12 py-2 font-barlow text-xl font-semibold leading-[45px] text-black shadow-xl transition duration-200 hover:bg-gray-200">
             ACIKTIM
           </button>
         </Link>
