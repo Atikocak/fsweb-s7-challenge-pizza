@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Terminal Pizza",
+      "imageUrl": "Assets/mile2-assets/pictures/food-1.png",
+      "rating": 4.5,
+      "reviews": 100,
+      "price": 60
+    },
+    {
+      "id": 2,
+      "title": "Position Absolute Acı Pizza",
+      "imageUrl": "Assets/mile2-assets/pictures/food-2.png",
+      "rating": 4.7,
+      "reviews": 450,
+      "price": 65
+    },
+    {
+      "id": 3,
+      "title": "useEffect Tavuklu Burger",
+      "imageUrl": "Assets/mile2-assets/pictures/food-3.png",
+      "rating": 4.6,
+      "reviews": 310,
+      "price": 75
+    }
+  ]
+}

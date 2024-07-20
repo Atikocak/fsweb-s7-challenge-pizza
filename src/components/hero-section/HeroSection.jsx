@@ -17,7 +17,7 @@ export default function HeroSection() {
         </h2>
       </div>
       <div className="mx-auto mt-4 w-48">
-        <Link to="/order">
+        <Link to="/order/2">
           <button className="rounded-full border-solid border-black bg-yellow px-12 py-2 font-barlow text-xl font-semibold leading-[45px] text-black shadow-xl transition duration-200 hover:bg-gray-200">
             ACIKTIM
           </button>

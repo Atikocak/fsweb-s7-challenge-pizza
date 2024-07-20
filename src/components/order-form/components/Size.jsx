@@ -19,8 +19,8 @@ export default function Size(props) {
               name="size"
               id={item.name}
               className="radio radio-xs"
-              value={item.name}
-              checked={size === item.name}
+              value={item.value}
+              checked={size === item.value}
               onChange={handleChange}
             />
             <label htmlFor={item.name} className="label cursor-pointer">

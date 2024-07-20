@@ -13,11 +13,13 @@ export default function SendOrder(props) {
       <div className="card-body">
         <h3 className="card-title font-bold">Sipariş Toplamı</h3>
         <div className="grid grid-flow-col grid-rows-2">
-          <p className="col-start-1 row-start-1">Seçimler</p>
+          <p className="col-start-1 row-start-1 font-semibold">Seçimler</p>
           <p className="col-start-2 row-start-1 text-right">
             {ingredientPrice}₺
           </p>
-          <p className="col-start-1 row-start-2 text-red">Toplam</p>
+          <p className="col-start-1 row-start-2 font-semibold text-red">
+            Toplam
+          </p>
           <p className="col-start-2 row-start-2 text-right text-red">
             {totalPrice}₺
           </p>
@@ -25,7 +27,7 @@ export default function SendOrder(props) {
       </div>
       <div className="card-actions justify-end">
         <button
-          className="btn btn-neutral w-full border-yellow !bg-yellow text-black hover:!bg-amber-200"
+          className="btn btn-neutral w-full border-yellow !bg-yellow font-sans text-black hover:!bg-amber-200"
           onClick={handleSubmit}
           disabled={disabled}
         >

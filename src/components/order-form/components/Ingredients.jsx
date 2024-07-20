@@ -28,8 +28,8 @@ export default function Ingredients(props) {
                 id={item.name}
                 name={item.name}
                 className="checkbox-warning checkbox checkbox-sm"
-                value={item.name}
-                checked={ingredients.includes(item.name) || false}
+                value={item.value}
+                checked={ingredients.includes(item.value) || false}
                 onChange={handleChange}
               />
               <label htmlFor={item.name} className="label cursor-pointer">

@@ -11,9 +11,10 @@ export default function Footer() {
               <div className="flex justify-stretch gap-16">
                 <div>
                   <img
-                    src="Assets/mile2-aseets/footer/logo-footer.svg"
+                    loading="lazy"
+                    src="/Assets/mile2-assets/footer/logo-footer.svg"
                     className="subpixel-antialiased"
-                    alt="Teknolojik Yemekler Logo"
+                    alt="Teknolojik-Yemekler-Logo"
                   />
                   <address className="mt-10 not-italic">
                     <ul className="flex flex-col gap-4">

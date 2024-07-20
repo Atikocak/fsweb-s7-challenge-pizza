@@ -17,7 +17,7 @@ export default function Dough(props) {
     >
       {doughData.map((item) => (
         <option key={item.id} value={item.value} disabled={item.disabled}>
-          {item.content}
+          {item.value}
         </option>
       ))}
     </select>

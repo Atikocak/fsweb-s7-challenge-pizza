@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Header(props) {
+  const { product } = props;
+
   return (
     <header className="bg-red">
       <div className="flex max-h-28 flex-col">
-        <div className="font-londrina mx-auto mt-6 text-5xl text-white">
+        <div className="mx-auto mt-6 font-londrina text-5xl text-white">
           <h1>Teknolojik Yemekler</h1>
         </div>
         <nav className="mx-auto text-white">
@@ -13,10 +15,12 @@ export default function Header() {
               <Link to="/">Anasayfa</Link>
             </li>
             <li className="rounded-md p-1 transition duration-300 hover:bg-yellow hover:text-black">
-              <Link to="/options">Seçenekler</Link>
+              <Link to="/#">Seçenekler</Link>
             </li>
             <li className="rounded-md p-1 transition duration-300 hover:bg-yellow hover:text-black">
-              <Link to="/order">Sipariş Oluştur</Link>
+              {product && (
+                <Link to={`/order/${product.id}`}>Sipariş Oluştur</Link>
+              )}
             </li>
           </ul>
         </nav>

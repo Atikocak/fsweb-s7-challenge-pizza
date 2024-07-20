@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import Button from "./ui/Button";
+
 export default function AbsoluteCard() {
   return (
     <div className="bg-card-1 aspect-[396/334] w-full rounded-md bg-cover bg-center bg-no-repeat">
@@ -8,9 +11,9 @@ export default function AbsoluteCard() {
         <p className="py-6 font-barlow text-base text-white antialiased sm:py-4">
           Position:Absolute Acı Burger
         </p>
-        <button className="rounded-full bg-white px-5 py-3 font-barlow text-xs font-bold text-red transition duration-300 hover:bg-yellow hover:text-dark-gray">
-          SİPARİŞ VER
-        </button>
+        <Link to={`/order/2`}>
+          <Button />
+        </Link>
       </div>
     </div>
   );

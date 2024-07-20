@@ -1,0 +1,31 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Terminal Pizza",
+      "description": "Frontent Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir. . Küçük bir pizzaya bazen pizzetta denir.",
+      "rating": 4.5,
+      "reviews": 100,
+      "price": 60,
+      "bannerUrl": "/Assets/mile2-assets/pictures/form-banner.png"
+    },
+    {
+      "id": 2,
+      "title": "Position Absolute Acı Pizza",
+      "description": "Aslında bir Backend Dev olmana rağmen Frontend alanına ilgi duyuyorsan terminal pizza tam sana göre. Mozarella peyniri ile kaplanmış, mantar, mısır, zeytin ve özel sosu ile birlikte odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, sarı ve tam buğday tanelerinden üretilmiş un ile mayalı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir. . Küçük bir pizzaya bazen pizzetta denir.",
+      "rating": 4.7,
+      "reviews": 450,
+      "price": 65,
+      "bannerUrl": "/Assets/mile2-assets/pictures/form-banner.png"
+    },
+    {
+      "id": 3,
+      "title": "useEffect Tavuklu Burger",
+      "description": "Frontend benim işim ama ne işim var pizza ile bana burger lazım diyorsan, useEffect tavuklu burger tam sana göre. Tavuğun en lezzetli yeri olan kalça etinden yapılan köfte harcı ve çevresinde tatlı soğan ile ekşi turşunun kontrast tadını, ekşi mayalı siyah buğday unundan yapılan ekmek ile birleştiren Alman kökenli lezzetli bir yemektir. Hamburger, Almanya'da Hamburg eyaletinden olan kişiye verilen isimdir.",
+      "rating": 4.6,
+      "reviews": 310,
+      "price": 75,
+      "bannerUrl": "/Assets/mile2-assets/pictures/form-banner.png"
+    }
+  ]
+}

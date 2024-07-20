@@ -3,32 +3,32 @@
     {
       "id": 1,
       "name": "item1",
-      "url": "Assets/mile2-aseets/footer/insta/li-0.png"
+      "url": "/Assets/mile2-assets/footer/insta/li-0.png"
     },
     {
       "id": 2,
       "name": "item2",
-      "url": "Assets/mile2-aseets/footer/insta/li-1.png"
+      "url": "/Assets/mile2-assets/footer/insta/li-1.png"
     },
     {
       "id": 3,
       "name": "item3",
-      "url": "Assets/mile2-aseets/footer/insta/li-2.png"
+      "url": "/Assets/mile2-assets/footer/insta/li-2.png"
     },
     {
       "id": 4,
       "name": "item4",
-      "url": "Assets/mile2-aseets/footer/insta/li-3.png"
+      "url": "/Assets/mile2-assets/footer/insta/li-3.png"
     },
     {
       "id": 5,
       "name": "item5",
-      "url": "Assets/mile2-aseets/footer/insta/li-4.png"
+      "url": "/Assets/mile2-assets/footer/insta/li-4.png"
     },
     {
       "id": 6,
       "name": "item6",
-      "url": "Assets/mile2-aseets/footer/insta/li-5.png"
+      "url": "/Assets/mile2-assets/footer/insta/li-5.png"
     }
   ],
   "hotMenu": [
@@ -68,19 +68,19 @@
       "id": 1,
       "name": "address",
       "value": "341 Londonderry Road, Istanbul Türkiye",
-      "icon": "Assets/mile2-aseets/footer/icons/icon-1.png"
+      "icon": "/Assets/mile2-assets/footer/icons/icon-1.png"
     },
     {
       "id": 2,
       "name": "mail",
       "value": "aciktim@teknolojikyemekler.com",
-      "icon": "Assets/mile2-aseets/footer/icons/icon-2.png"
+      "icon": "/Assets/mile2-assets/footer/icons/icon-2.png"
     },
     {
       "id": 3,
       "name": "phone",
       "value": "+90 216 123 45 67",
-      "icon": "Assets/mile2-aseets/footer/icons/icon-3.png"
+      "icon": "/Assets/mile2-assets/footer/icons/icon-3.png"
     }
   ]
 }

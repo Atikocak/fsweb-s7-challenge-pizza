@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import Button from "./ui/Button";
+
 export default function HackathlonCard() {
   return (
     <div className="bg-card-2 aspect-[396/160] w-full rounded-md bg-cover bg-center bg-no-repeat">
@@ -5,9 +8,9 @@ export default function HackathlonCard() {
         <h3 className="mb-4 font-barlow text-2xl font-semibold text-white">
           Hackathlon Burger Menü
         </h3>
-        <button className="rounded-full bg-white px-5 py-3 font-barlow text-xs font-bold text-red transition duration-300 hover:bg-yellow hover:text-dark-gray">
-          SİPARİŞ VER
-        </button>
+        <Link to={`/order/3`}>
+          <Button />
+        </Link>
       </div>
     </div>
   );

@@ -2,20 +2,20 @@
   "doughData": [
     {
       "id": 1,
-      "value": "",
-      "content": "Hamur Kalınlığı",
+      "name": "",
+      "value": "Hamur Kalınlığı",
       "disabled": true
     },
     {
       "id": 2,
-      "value": "thin",
-      "content": "İnce",
+      "name": "thin",
+      "value": "İnce",
       "disabled": false
     },
     {
       "id": 3,
-      "value": "thick",
-      "content": "Kalın",
+      "name": "thick",
+      "value": "Kalın",
       "disabled": false
     }
   ],

@@ -16,27 +16,26 @@ import Size from "./components/Size";
 import { initialData, initialErrors } from "./data/formData.json";
 import FormSection from "./FormSection";
 
-const productPrice = 85.5;
-
 /**
  * OrderForm component
  * Handles the pizza order form, including size, dough, ingredients, and customer information.
  * @component of OrderPage
  */
-export default function OrderForm() {
+export default function OrderForm(props) {
   const [order, setOrder] = useState(initialData);
   const [ingredientPrice, setIngredientPrice] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(productPrice);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [errors, setErrors] = useState(initialErrors);
   const [isValid, setIsValid] = useState(false);
   const navigate = useNavigate();
+  const { product } = props;
 
   useEffect(() => {
     // Calculate the ingredient price and total price
     if (order.amount >= 1) {
       setIngredientPrice(order.ingredients.length * 5);
       setTotalPrice(
-        order.amount * (productPrice + order.ingredients.length * 5),
+        order.amount * (product.price + order.ingredients.length * 5),
       );
     }
     // Form Validation
@@ -82,6 +81,7 @@ export default function OrderForm() {
       const submittedOrder = {
         ...order,
         price: totalPrice,
+        product: product.title,
       };
 
       axios
@@ -104,9 +104,15 @@ export default function OrderForm() {
 
   // JSX return
   return (
-    <form className="flex flex-col gap-4">
+    <form className="mx-auto flex max-w-lg flex-col gap-4 p-4">
       <div id="form-dimension" className="mt-4 flex justify-between">
-        <FormSection name="size" title="Boyut Seç" error={errors.size} required>
+        <FormSection
+          name="size"
+          title="Boyut Seç"
+          className="font-barlow"
+          error={errors.size}
+          required
+        >
           <Size
             size={order.size}
             handleChange={handleSelectionChange("size")}
@@ -115,6 +121,7 @@ export default function OrderForm() {
         <FormSection
           name="dough"
           title="Hamur Seç"
+          className="font-barlow"
           error={errors.dough}
           required
         >
@@ -127,6 +134,7 @@ export default function OrderForm() {
       <FormSection
         name="ingredients"
         title="Malzeme Seç"
+        className="font-barlow"
         error={errors.ingredients}
         required
       >
@@ -138,6 +146,7 @@ export default function OrderForm() {
       <FormSection
         name="customer-name"
         title="İsim"
+        className="font-barlow"
         error={errors.customerName}
         label
         required
@@ -147,7 +156,12 @@ export default function OrderForm() {
           handleChange={handleInputChange("customerName")}
         />
       </FormSection>
-      <FormSection name="order-message" title="Sipariş Notu" label>
+      <FormSection
+        name="order-message"
+        className="font-barlow"
+        title="Sipariş Notu"
+        label
+      >
         <OrderMessage
           message={order.message}
           handleChange={handleInputChange("message")}
@@ -165,7 +179,10 @@ export default function OrderForm() {
             handleChange={handleInputChange("amount", (value) => value > 0)}
           />
         </FormSection>
-        <FormSection name="submit" className="col-start-1 row-start-1">
+        <FormSection
+          name="submit"
+          className="col-start-1 row-start-1 font-barlow"
+        >
           <SendOrder
             ingredientPrice={ingredientPrice}
             totalPrice={totalPrice}
