@@ -7,7 +7,7 @@ export default function Success() {
 
   return (
     <Layout background="bg-red">
-      <div className="mx-auto h-full max-w-md p-4 text-center">
+      <div className="mx-auto h-full w-full max-w-md p-4 text-center">
         <p className="font-satisfy text-xl leading-5 text-yellow">
           lezzetin yolda
         </p>
@@ -17,10 +17,16 @@ export default function Success() {
         <hr />
         {order ? (
           <>
-            <h2 className="mt-2 font-barlow text-lg font-semibold text-white">
+            <h2 className="mt-8 font-barlow text-lg font-semibold text-white">
               {order.product}
             </h2>
-            <div className="mx-auto mt-2 w-48 text-left font-barlow text-sm text-white">
+            <div className="mx-auto mt-8 w-48 text-left font-barlow text-sm text-white">
+              <p>
+                İsim: <span className="font-bold">{order.customerName}</span>
+              </p>
+              <p>
+                Sipariş Notu: <span className="font-bold">{order.message}</span>
+              </p>
               <p>
                 Boyut: <span className="font-bold">{order.size}</span>
               </p>
@@ -34,7 +40,7 @@ export default function Success() {
                 </span>
               </p>
             </div>
-            <div className="mx-auto mt-2 w-80 rounded-lg border-2 border-white p-8 text-left font-barlow text-white">
+            <div className="mx-auto mt-8 w-80 rounded-lg border-2 border-white p-8 text-left font-barlow text-white">
               <h3 className="text-xl font-semibold">Sipariş Toplamı</h3>
               <div className="grid grid-flow-col grid-rows-2">
                 <p className="col-start-1 row-start-1">Seçimler</p>

@@ -6,9 +6,9 @@ export default function Layout(props) {
   const { children, product, background } = props;
 
   return (
-    <div className={`flex h-screen w-full flex-col ${background}`}>
+    <div className={`flex min-h-screen w-full flex-col ${background}`}>
       <Header product={product} />
-      <main>{children}</main>
+      <main className="flex-grow">{children}</main>
       <Footer />
     </div>
   );
