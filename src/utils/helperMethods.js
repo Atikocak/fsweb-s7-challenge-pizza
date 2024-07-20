@@ -1,7 +1,9 @@
 export const createSelectionHandler = (setOrder) => (field) => (e) => {
   const value =
     e.target.type === "checkbox" ? e.target.checked : e.target.value;
-  setOrder((prev) => ({ ...prev, [field]: value }));
+  if (value !== "Hamur Kalınlığı") {
+    setOrder((prev) => ({ ...prev, [field]: value }));
+  }
 };
 
 export const createIngredientChangeHandler = (setOrder) => (e) => {

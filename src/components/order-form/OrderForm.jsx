@@ -46,7 +46,7 @@ export default function OrderForm(props) {
       errors.size = "Lütfen pizza boyutunu seçiniz!";
       isValid = false;
     }
-    if (!order.dough) {
+    if (!order.dough || order.dough === "Hamur Kalınlığı") {
       errors.dough = "Lütfen hamur tipini seçiniz!";
       isValid = false;
     }
