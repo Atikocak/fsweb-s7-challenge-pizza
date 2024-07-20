@@ -7,14 +7,14 @@ export default function Success() {
 
   return (
     <Layout background="bg-red">
-      <div className="mx-auto h-full w-[586px] p-4 text-center">
+      <div className="mx-auto h-full max-w-md p-4 text-center">
         <p className="font-satisfy text-xl leading-5 text-yellow">
           lezzetin yolda
         </p>
         <h2 className="text-center font-roboto text-5xl font-light leading-[70px] text-white antialiased">
           SİPARİŞ ALINDI
         </h2>
-        <hr className="mx-auto w-[420px]" />
+        <hr />
         {order ? (
           <>
             <h2 className="mt-2 font-barlow text-lg font-semibold text-white">
