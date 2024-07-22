@@ -6,7 +6,7 @@ export const createSelectionHandler = (setOrder) => (field) => (e) => {
   }
 };
 
-export const createIngredientChangeHandler = (setOrder) => (e) => {
+export const createIngredientHandler = (setOrder) => (e) => {
   const { value, checked } = e.target;
   setOrder((prev) => ({
     ...prev,

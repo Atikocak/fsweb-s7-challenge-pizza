@@ -25,7 +25,8 @@ export default function Success() {
                 İsim: <span className="font-bold">{order.customerName}</span>
               </p>
               <p>
-                Sipariş Notu: <span className="font-bold">{order.message}</span>
+                Sipariş Notu:{" "}
+                <span className="font-bold">{order.orderMessage}</span>
               </p>
               <p>
                 Boyut: <span className="font-bold">{order.size}</span>
@@ -45,7 +46,7 @@ export default function Success() {
               <div className="grid grid-flow-col grid-rows-2">
                 <p className="col-start-1 row-start-1">Seçimler</p>
                 <p className="col-start-2 row-start-1 text-right">
-                  {order.ingredients.length * order.amount}₺
+                  {order.ingredients.length * order.amount * 5}₺
                 </p>
                 <p className="col-start-1 row-start-2">Toplam</p>
                 <p className="col-start-2 row-start-2 text-right">

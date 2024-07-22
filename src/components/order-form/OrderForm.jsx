@@ -1,11 +1,9 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import {
-  createIngredientChangeHandler,
-  createInputHandler,
-  createSelectionHandler,
-} from "utils/helperMethods";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import CustomerName from "./components/CustomerName";
 import Dough from "./components/Dough";
 import Ingredients from "./components/Ingredients";
@@ -13,7 +11,7 @@ import OrderAmount from "./components/OrderAmount";
 import OrderMessage from "./components/OrderMessage";
 import SendOrder from "./components/SendOrder";
 import Size from "./components/Size";
-import { initialData, initialErrors } from "./data/formData.json";
+import { initialData } from "./data/formData.json";
 import FormSection from "./FormSection";
 
 /**
@@ -21,177 +19,133 @@ import FormSection from "./FormSection";
  * Handles the pizza order form, including size, dough, ingredients, and customer information.
  * @component of OrderPage
  */
-export default function OrderForm(props) {
-  const [order, setOrder] = useState(initialData);
-  const [ingredientPrice, setIngredientPrice] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [errors, setErrors] = useState(initialErrors);
-  const [isValid, setIsValid] = useState(false);
+export default function OrderForm({ product }) {
+  const [submitError, setSubmitError] = useState(null);
   const navigate = useNavigate();
-  const { product } = props;
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors, isValid },
+  } = useForm({
+    defaultValues: initialData,
+    mode: "onChange",
+  });
 
-  useEffect(() => {
-    // Calculate the ingredient price and total price
-    if (order.amount >= 1) {
-      setIngredientPrice(order.ingredients.length * 5);
-      setTotalPrice(
-        order.amount * (product.price + order.ingredients.length * 5),
-      );
-    }
-    // Form Validation
-    let isValid = true;
-    let errors = { ...initialErrors };
+  const ingredients = watch("ingredients")?.length || 0;
+  const amount = watch("amount") || 1;
 
-    if (!order.size) {
-      errors.size = "Lütfen pizza boyutunu seçiniz!";
-      isValid = false;
-    }
-    if (!order.dough || order.dough === "Hamur Kalınlığı") {
-      errors.dough = "Lütfen hamur tipini seçiniz!";
-      isValid = false;
-    }
-    if (order.ingredients.length < 4) {
-      errors.ingredients = "En az 4 malzeme seçmelisiniz!";
-      isValid = false;
-    } else if (order.ingredients.length > 10) {
-      errors.ingredients = "En fazla 10 malzeme seçebilirsiniz!";
-      isValid = false;
-    }
-    if (!order.customerName) {
-      errors.customerName = "Lütfen teslimat için isim giriniz!";
-      isValid = false;
-    } else if (order.customerName.length < 3) {
-      errors.customerName = "İsim en az 3 karakter olmalıdır!";
-      isValid = false;
-    }
-    // Update the state
-    setErrors(errors);
-    setIsValid(isValid);
-  }, [order]);
-
-  /**
-   * Handles form submission
-   * Sends the order data to the server if valid
-   * @param {Event} e - The form submission event
-   */
-  // Form Submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (isValid) {
-      const submittedOrder = {
-        ...order,
-        price: totalPrice,
-        product: product.title,
-      };
-
-      axios
-        .post("https://reqres.in/api/pizza", submittedOrder)
-        .then((response) => {
-          console.log("Sipariş özeti: ", response.data);
-          navigate("/success", { state: { order: response.data } });
-        })
-        .catch((error) => {
-          console.error("Error: ", error);
-          setErrors((prev) => ({ ...prev, submit: error.message }));
-        });
-    }
+  const calculateTotalPrice = (order) => {
+    return order.amount * (product.price + order.ingredients.length * 5);
   };
 
-  // Event Handlers
-  const handleSelectionChange = createSelectionHandler(setOrder);
-  const handleIngredientChange = createIngredientChangeHandler(setOrder);
-  const handleInputChange = createInputHandler(setOrder);
+  const onSubmit = (order) => {
+    const submittedOrder = {
+      ...order,
+      price: calculateTotalPrice(order),
+      product: product.title,
+    };
+
+    axios
+      .post("https://reqres.in/api/pizza", submittedOrder)
+      .then((response) => {
+        console.log("Sipariş özeti: ", response.data);
+        toast.success("Teşekkürler, siparişiniz alındı!", {
+          position: "top-center",
+          autoClose: 5000,
+        });
+        navigate("/success", { state: { order: response.data } });
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+        toast.error("Ne yazık ki siparişinizi alamadık!", {
+          position: "top-center",
+          autoClose: 5000,
+        });
+        setSubmitError(
+          "Sipariş gönderilirken bir hata oluştu! ",
+          error.message,
+        );
+      });
+  };
 
   // JSX return
   return (
-    <form className="mx-auto flex max-w-lg flex-col gap-4 p-4">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="mx-auto flex max-w-lg flex-col gap-4 p-4"
+    >
       <div id="form-dimension" className="mt-4 flex justify-between">
         <FormSection
           name="size"
           title="Boyut Seç"
           className="font-barlow"
-          error={errors.size}
+          error={errors.size?.message}
           required
         >
-          <Size
-            size={order.size}
-            handleChange={handleSelectionChange("size")}
-          />
+          <Size register={register} />
         </FormSection>
         <FormSection
           name="dough"
           title="Hamur Seç"
           className="font-barlow"
-          error={errors.dough}
+          error={errors.dough?.message}
           required
         >
-          <Dough
-            dough={order.dough}
-            handleChange={handleSelectionChange("dough")}
-          />
+          <Dough register={register} />
         </FormSection>
       </div>
       <FormSection
         name="ingredients"
         title="Malzeme Seç"
         className="font-barlow"
-        error={errors.ingredients}
+        error={errors.ingredients?.message}
         required
       >
-        <Ingredients
-          ingredients={order.ingredients}
-          handleChange={handleIngredientChange}
-        />
+        <Ingredients register={register} />
       </FormSection>
       <FormSection
         name="customer-name"
         title="İsim"
         className="font-barlow"
-        error={errors.customerName}
+        error={errors.customerName?.message}
         label
         required
       >
-        <CustomerName
-          customerName={order.customerName}
-          handleChange={handleInputChange("customerName")}
-        />
+        <CustomerName register={register} />
       </FormSection>
       <FormSection
         name="order-message"
-        className="font-barlow"
         title="Sipariş Notu"
+        className="font-barlow"
+        error={errors.orderMessage?.message}
         label
       >
-        <OrderMessage
-          message={order.message}
-          handleChange={handleInputChange("message")}
-        />
+        <OrderMessage register={register} />
       </FormSection>
       <hr className="mt-4" />
       <div className="grid w-full grid-flow-col grid-rows-2 justify-between sm:flex sm:max-w-full sm:flex-row">
         <FormSection
           name="order-amount"
           className="col-start-1 row-start-2 mt-2"
+          error={errors.amount?.message}
         >
-          <OrderAmount
-            amount={order.amount}
-            setOrder={setOrder}
-            handleChange={handleInputChange("amount", (value) => value > 0)}
-          />
+          <OrderAmount register={register} setValue={setValue} watch={watch} />
         </FormSection>
         <FormSection
           name="submit"
           className="col-start-1 row-start-1 font-barlow"
         >
           <SendOrder
-            ingredientPrice={ingredientPrice}
-            totalPrice={totalPrice}
-            handleSubmit={handleSubmit}
+            ingredients={ingredients}
+            amount={amount}
+            totalPrice={calculateTotalPrice(watch())}
             disabled={!isValid}
           />
         </FormSection>
       </div>
-      {errors.submit && <p className="text-red">{errors.submit}</p>}
+      {submitError && <p className="mt-4 text-red">{submitError}</p>}
     </form>
   );
 }

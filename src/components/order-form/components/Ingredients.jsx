@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { ingredientData } from "../data/formData.json";
 
 /**
@@ -6,9 +5,7 @@ import { ingredientData } from "../data/formData.json";
  * Renders the ingredient selection checkboxes for the pizza order form.
  * @component of FormSection
  */
-export default function Ingredients(props) {
-  const { ingredients, handleChange } = props;
-
+export default function Ingredients({ register }) {
   return (
     <>
       <p className="pb-2 text-sm">
@@ -26,11 +23,18 @@ export default function Ingredients(props) {
               <input
                 type="checkbox"
                 id={item.name}
-                name={item.name}
                 className="checkbox-warning checkbox checkbox-sm"
                 value={item.value}
-                checked={ingredients.includes(item.value) || false}
-                onChange={handleChange}
+                {...register("ingredients", {
+                  required: true,
+                  validate: (value) => {
+                    if (value.length < 4)
+                      return "En az 4 malzeme seçmelisiniz!";
+                    if (value.length > 10)
+                      return "En fazla 10 malzeme seçebilirsiniz!";
+                    return true;
+                  },
+                })}
               />
               <label htmlFor={item.name} className="label cursor-pointer">
                 <span className="label-text">{item.value}</span>
@@ -42,8 +46,3 @@ export default function Ingredients(props) {
     </>
   );
 }
-
-Ingredients.propTypes = {
-  ingredients: PropTypes.array.isRequired,
-  handleChange: PropTypes.func.isRequired,
-};

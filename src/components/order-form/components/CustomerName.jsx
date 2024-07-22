@@ -1,13 +1,9 @@
-import PropTypes from "prop-types";
-
 /**
  * CustomerName component
  * Renders the customer name input field for the pizza order form.
  * @component of FormSection
  */
-export default function CustomerName(props) {
-  const { customerName, handleChange } = props;
-
+export default function CustomerName({ register }) {
   return (
     <>
       <input
@@ -15,14 +11,14 @@ export default function CustomerName(props) {
         id="customer-name-field"
         placeholder="Teslim edilecek kişinin adı?"
         className="input input-sm input-bordered w-full"
-        value={customerName}
-        onChange={handleChange}
+        {...register("customerName", {
+          required: "Lütfen teslimat için isim giriniz!",
+          minLength: {
+            value: 3,
+            message: "İsim en az 3 karakter olmalıdır!",
+          },
+        })}
       />
     </>
   );
 }
-
-CustomerName.propTypes = {
-  customerName: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
-};

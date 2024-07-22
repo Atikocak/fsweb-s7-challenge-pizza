@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { sizeData } from "../data/formData.json";
 
 /**
@@ -6,9 +5,7 @@ import { sizeData } from "../data/formData.json";
  * Renders the size selection radio buttons for the pizza order form.
  * @component of FormSection
  */
-export default function Size(props) {
-  const { size, handleChange } = props;
-
+export default function Size({ register }) {
   return (
     <>
       {sizeData.map((item) => {
@@ -16,12 +13,12 @@ export default function Size(props) {
           <div key={item.id} className="flex flex-row items-center">
             <input
               type="radio"
-              name="size"
               id={item.name}
               className="radio radio-xs"
               value={item.value}
-              checked={size === item.value}
-              onChange={handleChange}
+              {...register("size", {
+                required: "Lütfen pizza boyutunu seçiniz!",
+              })}
             />
             <label htmlFor={item.name} className="label cursor-pointer">
               <span className="label-text">{item.value}</span>
@@ -32,8 +29,3 @@ export default function Size(props) {
     </>
   );
 }
-
-Size.propTypes = {
-  size: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
-};

@@ -1,13 +1,9 @@
-import PropTypes from "prop-types";
-
 /**
  * OrderMessage component
  * Renders the order message textarea for the pizza order form.
  * @component of FormSection
  */
-export default function OrderMessage(props) {
-  const { message, handleChange } = props;
-
+export default function OrderMessage({ register }) {
   return (
     <>
       <textarea
@@ -15,14 +11,13 @@ export default function OrderMessage(props) {
         rows={1}
         placeholder="Siparişine eklemek istediğin bir not var mı?"
         className="textarea textarea-bordered textarea-sm w-full"
-        value={message}
-        onChange={handleChange}
+        {...register("orderMessage", {
+          maxLength: {
+            value: 200,
+            message: "Notunuz en fazla 200 karakter olabilir!",
+          },
+        })}
       />
     </>
   );
 }
-
-OrderMessage.propTypes = {
-  message: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
-};
