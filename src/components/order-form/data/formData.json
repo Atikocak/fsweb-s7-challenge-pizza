@@ -113,7 +113,7 @@
     "dough": "Hamur Kalınlığı",
     "ingredients": [],
     "customerName": "",
-    "message": "",
+    "orderMessage": "",
     "amount": 1
   },
   "initialErrors": {
