@@ -7,7 +7,7 @@ export default function SendOrder({
   ingredients,
   amount,
   totalPrice,
-  disabled,
+  isValid,
 }) {
   return (
     <div className="card min-w-[352px] bg-base-100 shadow-xl sm:w-72">
@@ -29,8 +29,9 @@ export default function SendOrder({
       <div className="card-actions justify-end">
         <button
           type="submit"
-          className="btn btn-neutral w-full border-yellow !bg-yellow font-sans text-black hover:!bg-amber-200"
-          disabled={disabled}
+          className={`btn btn-neutral w-full border-yellow !bg-yellow font-sans text-black hover:!bg-amber-200 ${
+            !isValid ? "opacity-45" : ""
+          }`}
         >
           SİPARİŞ VER
         </button>

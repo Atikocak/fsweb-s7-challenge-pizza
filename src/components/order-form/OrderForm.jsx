@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -21,16 +21,19 @@ import FormSection from "./FormSection";
  */
 export default function OrderForm({ product }) {
   const [submitError, setSubmitError] = useState(null);
+  const formRef = useRef(null);
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     setValue,
     watch,
+    setError,
+    trigger,
     formState: { errors, isValid },
   } = useForm({
     defaultValues: initialData,
-    mode: "onChange",
+    mode: "onSubmit",
   });
 
   const ingredients = watch("ingredients")?.length || 0;
@@ -40,7 +43,14 @@ export default function OrderForm({ product }) {
     return order.amount * (product.price + order.ingredients.length * 5);
   };
 
-  const onSubmit = (order) => {
+  const onSubmit = async (order) => {
+    const result = await trigger();
+    if (!isValid) {
+      const firstError = Object.keys(errors)[0];
+      formRef.current[firstError].focus();
+      return;
+    }
+
     const submittedOrder = {
       ...order,
       price: calculateTotalPrice(order),
@@ -73,6 +83,7 @@ export default function OrderForm({ product }) {
   // JSX return
   return (
     <form
+      ref={formRef}
       onSubmit={handleSubmit(onSubmit)}
       className="mx-auto flex max-w-lg flex-col gap-4 p-4"
     >
@@ -141,7 +152,7 @@ export default function OrderForm({ product }) {
             ingredients={ingredients}
             amount={amount}
             totalPrice={calculateTotalPrice(watch())}
-            disabled={!isValid}
+            isValid={isValid}
           />
         </FormSection>
       </div>

@@ -26,7 +26,7 @@ export default function Ingredients({ register }) {
                 className="checkbox-warning checkbox checkbox-sm"
                 value={item.value}
                 {...register("ingredients", {
-                  required: true,
+                  required: "En az 4 malzeme seçmelisiniz!",
                   validate: (value) => {
                     if (value.length < 4)
                       return "En az 4 malzeme seçmelisiniz!";

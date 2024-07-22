@@ -11,7 +11,8 @@ export default function Dough({ register }) {
       className="select select-bordered select-sm w-full max-w-xs py-0"
       {...register("dough", {
         required: "Lütfen hamur tipini seçiniz!",
-        validate: (value) => value !== "Hamur Kalınlığı",
+        validate: (value) =>
+          value !== "Hamur Kalınlığı" || "Lütfen hamur tipini seçiniz!",
       })}
     >
       {doughData.map((item) => (
