@@ -28,7 +28,6 @@ export default function OrderForm({ product }) {
     handleSubmit,
     setValue,
     watch,
-    setError,
     trigger,
     formState: { errors, isValid },
   } = useForm({
@@ -45,7 +44,7 @@ export default function OrderForm({ product }) {
 
   const onSubmit = async (order) => {
     const result = await trigger();
-    if (!isValid) {
+    if (!result) {
       const firstError = Object.keys(errors)[0];
       formRef.current[firstError].focus();
       return;
