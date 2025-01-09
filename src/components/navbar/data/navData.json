@@ -3,32 +3,32 @@
     {
       "id": 1,
       "name": "YENİ! Kore",
-      "imageUrl": "/Assets/mile2-assets/icons/1.svg"
+      "imageUrl": "Assets/mile2-assets/icons/1.svg"
     },
     {
       "id": 2,
       "name": "Pizza",
-      "imageUrl": "/Assets/mile2-assets/icons/2.svg"
+      "imageUrl": "Assets/mile2-assets/icons/2.svg"
     },
     {
       "id": 3,
       "name": "Burger",
-      "imageUrl": "/Assets/mile2-assets/icons/3.svg"
+      "imageUrl": "Assets/mile2-assets/icons/3.svg"
     },
     {
       "id": 4,
       "name": "Kızartmalar",
-      "imageUrl": "/Assets/mile2-assets/icons/4.svg"
+      "imageUrl": "Assets/mile2-assets/icons/4.svg"
     },
     {
       "id": 5,
       "name": "Fast Food",
-      "imageUrl": "/Assets/mile2-assets/icons/5.svg"
+      "imageUrl": "Assets/mile2-assets/icons/5.svg"
     },
     {
       "id": 6,
       "name": "Gazlı İçecek",
-      "imageUrl": "/Assets/mile2-assets/icons/6.svg"
+      "imageUrl": "Assets/mile2-assets/icons/6.svg"
     }
   ],
   "populars": [
